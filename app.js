@@ -3,13 +3,15 @@ const app = express();
 const morgan = require('morgan');
 
 // Routes
-const lm = require('./api/routes/lm');
+const temperatures = require('./api/routes/temperatures');
+const ac = require('./api/routes/ac');
 
 // Added npm morgan as a logging tool
 app.use(morgan('dev'));
 
-// When request hit this resource pass it to lm route
-app.use('/temperature-manager/api/lm', lm);
+// When request hit this resource pass it to temperatures route
+app.use('/temperature-manager/api/temperatures', temperatures);
+app.use('/temperature-manager/api/ac', ac);
 
 // If request not found by handlers above
 app.use((req, res, next) => {
